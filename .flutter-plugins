@@ -3,3 +3,6 @@ cloud_firestore=/Users/jagmit/dev/flutter/.pub-cache/hosted/pub.dartlang.org/clo
 cloud_firestore_web=/Users/jagmit/dev/flutter/.pub-cache/hosted/pub.dartlang.org/cloud_firestore_web-0.1.1+2/
 firebase_core=/Users/jagmit/dev/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core-0.4.5/
 firebase_core_web=/Users/jagmit/dev/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core_web-0.1.1+2/
+path_provider=/Users/jagmit/dev/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider-1.6.11/
+path_provider_linux=/Users/jagmit/dev/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_linux-0.0.1+2/
+path_provider_macos=/Users/jagmit/dev/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_macos-0.0.4+3/

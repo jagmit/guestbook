@@ -8,9 +8,12 @@ class GuestbookEntry {
 
   final DateTime timestamp;
 
+  final String name;
+
   final String message;
 
   GuestbookEntry({
+    @required this.name,
     this.entryId,
     this.timestamp,
     @required this.message,
@@ -25,11 +28,13 @@ class GuestbookEntry {
       entryId: doc.documentID,
       timestamp: DateHelper.timeStampToDateTime(resolveKey("timestamp")),
       message: resolveKey("message"),
+      name: resolveKey("name"),
     );
   }
 
-   Map<String, dynamic> toFirestore() {
+  Map<String, dynamic> toFirestore() {
     return {
+      "name": this.name,
       "message": this.message,
       "timestamp": Timestamp.fromDate(DateTime.now()),
     };
