@@ -23,22 +23,30 @@ class MyApp extends StatelessWidget {
             .snackBarTheme
             .copyWith(behavior: SnackBarBehavior.floating),
       ),
-      home: MyHomePage(),
+      home: GuestbookPage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key}) : super(key: key);
+class GuestbookPage extends StatefulWidget {
+  GuestbookPage({Key key}) : super(key: key);
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _GuestbookPageState createState() => _GuestbookPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _GuestbookPageState extends State<GuestbookPage> {
   GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   bool _isMobile(context) => MediaQuery.of(context).size.width <= 576;
+
+  Stream<List<GuestbookEntry>> _stream;
+
+  @override
+  void initState() {
+    _stream = FirebaseService.listenToEntries();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,8 +76,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       SizedBox(height: 40),
-                      FutureBuilder(
-                        future: FirebaseService.fetchAllEntries(),
+                      StreamBuilder(
+                        stream: _stream,
                         builder: (context, snapshot) {
                           if (snapshot.connectionState ==
                               ConnectionState.waiting) {
@@ -279,7 +287,7 @@ class BackgroundPainter extends CustomPainter {
         );
       }
     }
-    print("painted once");
+    print("painted background");
   }
 
   @override
